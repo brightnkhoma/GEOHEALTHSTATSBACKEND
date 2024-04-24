@@ -85,8 +85,8 @@ export const addHospital = async(req,res,next)=>{
 export const getDistrict = async (req,res,next)=>{
     try {
         
-        const res = await district.find();
-        res.status(200).json(res)
+        const _res = await district.find();
+        res.status(200).json(_res)
     } catch (error) {
         next(errorHandler(500,error.message))
     }
