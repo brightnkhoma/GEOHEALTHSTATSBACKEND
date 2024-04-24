@@ -88,6 +88,6 @@ export const getDistrict = async (req,res,next)=>{
         const res = await district.find();
         res.status(200).json(res)
     } catch (error) {
-        next(errorHandler(error.message))
+        next(errorHandler(500,error.message))
     }
 }
