@@ -50,8 +50,8 @@ export const addUser = async(req,res,next)=>{
         const encryptedPassword = bcrypt.hashSync(passord,10)
         const admin = new user({image,name,email,password:encryptedPassword})
         await admin.save();
-        code = 200
-        res.status(code).json(`welcome ${name} to geohealthstats!!!!`)
+       
+        res.status(200).json(`welcome ${name} to geohealthstats!!!!`)
     } catch (error) {
         res.status(400).json(error.message)
        // next(errorHandler(500,error.message))
