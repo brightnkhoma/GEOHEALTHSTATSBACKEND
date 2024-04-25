@@ -9,6 +9,6 @@ router.post('/adddistrict',addDistrict)
 router.get('/getdisease',getDiseaase)
 router.post('/addhospital',addHospital)
 router.get('/getdistrict',getDistrict)
-router.get('/getdistricthospitals',getDistrictHospitals)
+router.post('/getdistricthospitals',getDistrictHospitals)
 
 export default router;
