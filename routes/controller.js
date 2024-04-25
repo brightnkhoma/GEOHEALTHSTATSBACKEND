@@ -73,6 +73,8 @@ export const addHospital = async(req,res,next)=>{
     try {
         
         const {name,location,_district} = req.body;
+        const exist = await hospital.findOne({name});
+        if(name) return next(errorHandler(400,`${name} already exists!`))
         const hospitalDistrict = await district.findOne({name:_district})
         if(!hospitalDistrict) return next(errorHandler(500,`districts ${_district} does not exist or try to spell it correctly and capitalise the first character`))
         const hosp = new hospital({_id:new mongoose.Types.ObjectId,name,district:hospitalDistrict._id,location})
