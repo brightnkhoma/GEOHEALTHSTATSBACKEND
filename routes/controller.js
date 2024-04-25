@@ -44,10 +44,10 @@ export const addDisease = async(req,res,next)=>{
 export const addUser = async(req,res,next)=>{
     try {
         
-        const {email,image,name,passord} = req.body;
+        const {email,image,name,password} = req.body;
         const _user = await user.findOne({email})
         if(_user) return  res.status(400).json(`user ${name} already exists!`)
-        const encryptedPassword = bcrypt.hashSync(passord,10)
+        const encryptedPassword = bcrypt.hashSync(password,10)
         const admin = new user({image,name,email,password:encryptedPassword})
         await admin.save();
        
