@@ -76,6 +76,8 @@ export const addHospital = async(req,res,next)=>{
         const hospitalDistrict = await district.findOne({name:_district})
         if(!hospitalDistrict) return next(errorHandler(500,`districts ${_district} does not exist or try to spell it correctly and capitalise the first character`))
         const hosp = new hospital({_id:new mongoose.Types.ObjectId,name,district:hospitalDistrict._id,location})
+        await hosp.save()
+        res.status(200).json(`hospital ${name} saved successifully!`)
     } catch (error) {
         next(errorHandler(500,error.message))
     }
