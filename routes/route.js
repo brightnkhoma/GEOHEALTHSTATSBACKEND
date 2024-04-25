@@ -1,5 +1,5 @@
 import express from 'express'
-import {addDisease,addDistrict,addUser,getDiseaase,addHospital,getDistrict} from './controller.js'
+import {addDisease,addDistrict,addUser,getDiseaase,addHospital,getDistrict,getDistrictHospitals} from './controller.js'
 
 const router = express.Router()
 
@@ -9,5 +9,6 @@ router.post('/adddistrict',addDistrict)
 router.get('/getdisease',getDiseaase)
 router.post('/addhospital',addHospital)
 router.get('/getdistrict',getDistrict)
+router.get('/getdistricthospitals',getDistrictHospitals)
 
 export default router;

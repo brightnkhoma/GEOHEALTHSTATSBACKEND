@@ -100,3 +100,18 @@ export const getDistrict = async (req,res,next)=>{
        // next(errorHandler(500,error.message))
     }
 }
+
+export const getDistrictHospitals = async(req,res,next)=>{
+    try {
+        
+        const {_district} = req.body;
+        const dist = await district.findOne({name:_district})
+        if(!dist) return res.status(400).json(`${_district} does not exist`);
+        const hosp = await hospital.find({district:dist._id})
+        res.status(200).json(hosp)
+    } catch (error) {
+        res.status(500).json(error.message)
+    }
+
+    
+}
