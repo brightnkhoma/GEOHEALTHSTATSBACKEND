@@ -131,11 +131,11 @@ export const getAllDiseases = async(req,res,next)=>{
 export const getDiseases = async(req,res,next)=>{
     try {
         
-        const data = await disease.find("name");
+        const data = await disease.find();
         let _array = [];
         data.forEach(x=>{
-            if(_array.includes(x)){
-                _array.push(x)
+            if(_array.includes(x.name)){
+                _array.push(x.name)
             }
         })
         res.status(200).json(_array)
