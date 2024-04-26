@@ -25,12 +25,12 @@ export const addDistrict = async(req,res,next)=>{
 
 export const addDisease = async(req,res,next)=>{
     try {
-        const {name,causes,count,location,numberOfDeaths,numberOfRecoveries,recommendation,email} = req.body
+        const {name,causes,count,location,numberOfDeaths,numberOfRecoveries,recommendation,email,hospital} = req.body
         const admin = await user.findOne({email})
         if(!admin) return res.status(500).json("You are not authorised to add this data")
         const loc = await district.findOne({name:location})
         if(!loc) return res.status(500).json("this location does not exist")
-        const dis = new disease({causes,count,location:loc._id,name,numberOfDeaths,recommendation,numberOfRecoveries,author:admin._id,});
+        const dis = new disease({causes,count,location:loc._id,name,numberOfDeaths,recommendation,numberOfRecoveries,author:admin._id,hospital});
 
         await dis.save();
         res.status(400).json(`added ${name} successifully`)
