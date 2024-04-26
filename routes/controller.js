@@ -35,7 +35,7 @@ export const addDisease = async(req,res,next)=>{
         const dis = new disease({causes,count,location:loc._id,name,numberOfDeaths,recommendation,numberOfRecoveries,author:admin._id,hospital:_hosp._id});
 
         await dis.save();
-        res.status(400).json(`added ${name} successifully`)
+        res.status(200).json(`added ${name} successifully`)
     } catch (error) {
         res.status(400).json(error.message)
         //next(errorHandler(500,error.message))
