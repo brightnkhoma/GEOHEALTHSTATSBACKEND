@@ -121,7 +121,7 @@ export const getDistrictHospitals = async(req,res,next)=>{
 export const getAllDiseases = async(req,res,next)=>{
     try {
         
-        const x=await disease.find();
+        const x=await disease.find().populate('author');
         res.status(200).json(x)
     } catch (error) {
         res.status(400).json(error.message)
