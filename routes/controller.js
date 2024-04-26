@@ -64,7 +64,7 @@ export const getDiseaase = async(req,res,next)=>{
     try {
         
         const {name} = req.body
-        const data = await disease.find({name}).populate(['location','author'])
+        const data = await disease.find({name}).populate(['location','author','hospital'])
         if(!data) return res.status(500).json(`disease ${name} in not recorded in our database`)
         res.status(200).json(data)
 
