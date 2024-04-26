@@ -127,3 +127,20 @@ export const getAllDiseases = async(req,res,next)=>{
         res.status(400).json(error.message)
     }
 }
+
+export const getDiseases = async(req,res,next)=>{
+    try {
+        
+        const data = await disease.find("name");
+        let _array = [];
+        data.forEach(x=>{
+            if(_array.includes(x)){
+                _array.push(x)
+            }
+        })
+        res.status(200).json(_array)
+    } catch (error) {
+        res.status(500).json(error.message)
+        
+    }
+}
