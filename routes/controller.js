@@ -135,7 +135,7 @@ export const getDiseases = async(req,res,next)=>{
         let _array = [];
         console.log(data)
         data.forEach(x=>{
-            if(_array.includes(x.name)){
+            if(!_array.includes(x.name)){
                 _array.push(x.name)
             }
         })
